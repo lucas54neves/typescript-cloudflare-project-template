@@ -1,7 +1,26 @@
 {
   "name": "typescript-cloudflare-project-template",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "worker.js",
+  "scripts": {
+    "start": "concurrently yarn:build:watch yarn:server",
+    "all": "run-p build:watch server",
+    "server": "deno run --unstable --watch -A ./server.deno.js",
+    "build": "esbuild src/index.ts --bundle --format=esm --platform=node --outfile=worker.js --external:node-fetch --define:require=require_node_fetch --inject:./require.shim.js --inject:./fetch.shim.js",
+    "build:watch": "yarn -s build --watch",
+    "w": "CF_API_TOKEN=bI-2SgtFw5YzfTY0jZye53x8xVmHknqEtYNDuTEi wrangler",
+    "dev": "yarn w dev",
+    "dev:watch": "concurrently yarn:build:watch yarn:dev",
+    "preview": "yarn w preview",
+    "deploy": "yarn w publish"
+  },
   "repository": "https://github.com/lucas54neves/typescript-cloudflare-project-template.git",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^2.1.0",
+    "@cloudflare/wrangler": "^1.13.0",
+    "cloudflare": "^2.7.0",
+    "concurrently": "^5.3.0",
+    "esbuild": "^0.8.46"
+  }
 }

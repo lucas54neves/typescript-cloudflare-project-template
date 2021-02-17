@@ -1,0 +1,4 @@
+name = "hello-world"
+type = "javascript"
+account_id = "4042c88db258bc8fe753ef2dd5c6d4f2"
+workers_dev = true
