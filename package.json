@@ -1,0 +1,7 @@
+{
+  "name": "typescript-cloudflare-project-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lucas54neves/typescript-cloudflare-project-template.git",
+  "license": "MIT"
+}
