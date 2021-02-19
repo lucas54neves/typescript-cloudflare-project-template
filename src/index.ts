@@ -1,6 +1,6 @@
-import { corsListener } from './listeners/corsListener'
-import { favIconListener } from './listeners/favIconListener'
-import { eventListener } from './listeners/eventListener'
+import { corsListener } from './events/corsListener'
+import { favIconListener } from './events/favIconListener'
+import { eventListener } from './events/eventListener'
 
 addEventListener("fetch", corsListener)
 
