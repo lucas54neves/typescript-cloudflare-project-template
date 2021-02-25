@@ -15,7 +15,7 @@ function handlerRouter(event: FetchEvent) {
 import { registerLogs } from './registerLogs'
 
 async function resonseTest() {
-  return new Response('Hello World', {status: 200})
+  return new Response('This is a typescript Cloudflare project template', { status: 200 })
 }
 
 async function handleRequest(event: FetchEvent) {
