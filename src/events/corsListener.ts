@@ -1,13 +1,13 @@
 export function corsListener(event: FetchEvent) {
-  const response = corsHandler(event.request);
+  const response = corsHandler(event.request)
   if (response) {
-    event.respondWith(response);
+    event.respondWith(response)
   }
 }
 
 function corsHandler(request: Request) {
-  if (request.method.toUpperCase() === "OPTIONS") {
-    return respondWithCors();
+  if (request.method.toUpperCase() === 'OPTIONS') {
+    return respondWithCors()
   }
 }
 
@@ -21,9 +21,9 @@ function respondWithCors() {
       ...CORS,
       // Safari (and potentially other browsers) need content-length 0,
       // for 204 or they just hang waiting for a body
-      "Content-Length": "0",
+      'Content-Length': '0',
     },
-  });
+  })
 }
 
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin
@@ -32,10 +32,10 @@ function respondWithCors() {
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods
 const CORS = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Methods":
-    "GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD, CONNECT, TRACE",
-  "Access-Control-Allow-Headers": "*",
-  "Access-Control-Allow-Credentials": "true",
-  "Access-Control-Max-Age": "86400",
-};
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods':
+    'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD, CONNECT, TRACE',
+  'Access-Control-Allow-Headers': '*',
+  'Access-Control-Allow-Credentials': 'true',
+  'Access-Control-Max-Age': '86400',
+}
