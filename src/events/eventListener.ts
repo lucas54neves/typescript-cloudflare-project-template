@@ -2,7 +2,7 @@ import { routes } from '../routes'
 
 function notFoundRoute(event: FetchEvent) {
   return new Response(`${event.request.url} do not found!`, {
-    status: 404,
+    status: 404
   })
 }
 
@@ -13,7 +13,5 @@ function handleRequest(event: FetchEvent) {
 }
 
 export function eventListener(event: FetchEvent) {
-  event.passThroughOnException()
-
   event.respondWith(handleRequest(event))
 }

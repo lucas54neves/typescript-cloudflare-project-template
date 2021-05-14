@@ -25,20 +25,11 @@ function buildMetadataFromHeaders(headers: Headers) {
 }
 
 async function logRecorder(event: FetchEvent, request: any, response: any) {
-  const {
-    requestMethod,
-    requestURL,
-    requestHeaders,
-    requestCf,
-    requestBody,
-  } = request
+  const { requestMethod, requestURL, requestHeaders, requestCf, requestBody } =
+    request
 
-  const {
-    responseBody,
-    responseTime,
-    responseStatus,
-    responseHeaders,
-  } = response
+  const { responseBody, responseTime, responseStatus, responseHeaders } =
+    response
 
   const userAgent = requestHeaders.get('user-agent')
   const requestHost = requestHeaders.get('host')
@@ -59,19 +50,19 @@ async function logRecorder(event: FetchEvent, request: any, response: any) {
         headers: responseMetadata,
         origin_time: responseTime,
         status_code: responseStatus,
-        body: responseBody,
+        body: responseBody
       },
       request: {
         url: requestURL,
         method: requestMethod,
         headers: requestMetadata,
         cf: requestCf,
-        body: requestBody,
+        body: requestBody
       },
       logflare_worker: {
-        worker_id: makeid(6),
-      },
-    },
+        worker_id: makeid(6)
+      }
+    }
   }
 
   const init = {
@@ -79,9 +70,9 @@ async function logRecorder(event: FetchEvent, request: any, response: any) {
     headers: {
       'X-API-KEY': LOGFLARE_APIKEY,
       'Content-Type': 'application/json',
-      'User-Agent': `Cloudflare Worker via ${requestHost}`,
+      'User-Agent': `Cloudflare Worker via ${requestHost}`
     },
-    body: JSON.stringify(logflareEventBody),
+    body: JSON.stringify(logflareEventBody)
   }
 
   event.waitUntil(fetch('https://api.logflare.app/logs', init))

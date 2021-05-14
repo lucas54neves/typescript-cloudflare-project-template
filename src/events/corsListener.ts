@@ -21,8 +21,8 @@ function respondWithCors() {
       ...CORS,
       // Safari (and potentially other browsers) need content-length 0,
       // for 204 or they just hang waiting for a body
-      'Content-Length': '0',
-    },
+      'Content-Length': '0'
+    }
   })
 }
 
@@ -37,5 +37,5 @@ const CORS = {
     'GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD, CONNECT, TRACE',
   'Access-Control-Allow-Headers': '*',
   'Access-Control-Allow-Credentials': 'true',
-  'Access-Control-Max-Age': '86400',
+  'Access-Control-Max-Age': '86400'
 }

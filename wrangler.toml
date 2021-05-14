@@ -1,4 +1,4 @@
-name = "hello-world"
+name = "template-cfw-typescript"
 type = "javascript"
-account_id = "4042c88db258bc8fe753ef2dd5c6d4f2"
+account_id = "4a91122b55b307b669fde5bdef624065"
 workers_dev = true
