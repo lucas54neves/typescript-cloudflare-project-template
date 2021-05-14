@@ -1,37 +1,23 @@
-import { jsonResponse, registerLog } from '../utils'
+import { registerLogs } from '@lucas54neves/logflare'
 
-export function pageHomeRouter(event: FetchEvent) {
-  const { request } = event
+import { jsonResponse } from '../utils'
+
+export async function pageHomeRouter(event: FetchEvent) {
+  const logflareCredentials = {
+    apiKey: 'LfyAMZaQk_y7',
+    sourceKey: '1948aef9-da5e-48be-bd22-5d426a4889bc'
+  }
+
   const message = 'This is a typescript Cloudflare project template'
 
-  const requestBody = message
-
-  const begin = Date.now()
-
   const response = jsonResponse(
-    'This is a typescript Cloudflare project template',
+    'This is a typescript Cloudflare project template'
   )
 
-  const responseTime = Date.now() - begin
-
-  const responseBody = message
-
-  const requestData = {
-    requestMethod: request.method,
-    requestURL: request.url,
-    requestHeaders: request.headers,
-    requestCf: request.cf,
-    requestBody,
-  }
-
-  const responseData = {
-    responseBody,
-    responseTime,
-    responseStatus: response.status,
-    responseHeaders: response.headers,
-  }
-
-  registerLog(event, requestData, responseData)
+  await registerLogs({
+    credentials: logflareCredentials,
+    message
+  })
 
   return response
 }
